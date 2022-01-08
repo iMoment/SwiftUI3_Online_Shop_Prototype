@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var selectedIndex: Int = 0
     @State private var searchText: String = ""
     private let categories = ["All", "Chair", "Sofa", "Lamp", "Kitchen", "Table"]
     
@@ -23,6 +24,18 @@ struct ContentView: View {
                     .padding()
                 
                 SearchScanView()
+                
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack {
+                        ForEach(0..<categories.count) { index in
+                            CategoryView(isActive: index == selectedIndex, text: categories[index])
+                                .onTapGesture {
+                                    selectedIndex = index
+                                }
+                        }
+                    }
+                    .padding()
+                }
             }
         }
     }
@@ -85,9 +98,11 @@ struct SearchScanView: View {
             
             Button(action: { }, label: {
                 Image(systemName: "barcode.viewfinder")
-                    .padding(.all, 12)
-                    .font(.system(size: 32, weight: .bold))
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
                     .foregroundColor(Color.white)
+                    .frame(width: 30, height: 30)
+                    .padding()
                     
             })
             .background(Color("primary"))
@@ -95,5 +110,24 @@ struct SearchScanView: View {
             
         }
         .padding(.horizontal)
+    }
+}
+
+struct CategoryView: View {
+    let isActive: Bool
+    let text: String
+    var body: some View {
+        VStack(alignment: .leading, spacing: 0) {
+            Text(text)
+                .font(.system(size: 18, weight: .medium))
+                .foregroundColor(isActive ? Color("primary") : Color.black.opacity(0.5))
+            
+            if isActive {
+                Color("primary")
+                    .frame(width: 15, height: 2)
+                    .clipShape(Capsule())
+            }
+        }
+        .padding(.trailing)
     }
 }
