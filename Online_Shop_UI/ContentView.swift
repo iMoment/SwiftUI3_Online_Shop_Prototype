@@ -17,26 +17,102 @@ struct ContentView: View {
             Color("background")
                 .edgesIgnoringSafeArea(.all)
             
-            VStack(alignment: .leading) {
-                TopBarView()
-                
-                TagLineView()
-                    .padding()
-                
-                SearchScanView()
-                
-                ScrollView(.horizontal, showsIndicators: false) {
-                    HStack {
-                        ForEach(0..<categories.count) { index in
-                            CategoryView(isActive: index == selectedIndex, text: categories[index])
-                                .onTapGesture {
-                                    selectedIndex = index
-                                }
+            ScrollView {
+                VStack(alignment: .leading) {
+                    TopBarView()
+                    
+                    TagLineView()
+                        .padding()
+                    
+                    SearchScanView()
+                    
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack {
+                            ForEach(0..<categories.count) { index in
+                                CategoryView(isActive: index == selectedIndex, text: categories[index])
+                                    .onTapGesture {
+                                        selectedIndex = index
+                                    }
+                            }
                         }
+                        .padding()
                     }
-                    .padding()
+                    
+                    Text("Popular")
+                        .font(.custom("PlayfairDisplay-Bold", size: 24))
+                        .padding(.horizontal)
+                    
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack {
+                            ForEach(0 ..< 4) { index in
+                                ProductCardView(image: Image("chair_\(index + 1)"), size: 210)
+                            }
+                            .padding(.trailing)
+                        }
+                        .padding(.leading)
+                    }
+                    
+                    Text("Best")
+                        .font(.custom("PlayfairDisplay-Bold", size: 24))
+                        .padding(.horizontal)
+                        .padding(.top)
+                    
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack {
+                            ForEach(0 ..< 4) { index in
+                                ProductCardView(image: Image("chair_\(index + 1)"), size: 180)
+                            }
+                            .padding(.trailing)
+                        }
+                        .padding(.leading)
+                    }
                 }
             }
+            
+            // MARK: Custom Bottom TabBar
+            HStack {
+                Spacer()
+                
+                Button(action: { }, label: {
+                    Image("home")
+                        .frame(maxWidth: .infinity)
+                })
+                
+                Spacer()
+                
+                Button(action: { }, label: {
+                    Image(systemName: "suit.heart")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(maxWidth: .infinity, maxHeight: 24)
+                        .foregroundColor(Color.black.opacity(0.7))
+                        
+                })
+                
+                Spacer()
+                
+                Button(action: { }, label: {
+                    Image(systemName: "cart")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(maxWidth: .infinity, maxHeight: 26)
+                        .foregroundColor(Color.black.opacity(0.7))
+                })
+                
+                
+                Spacer()
+                
+                Button(action: { }, label: {
+                    Image("user")
+                        .frame(maxWidth: .infinity)
+                })
+                
+                Spacer()
+            }
+            .padding()
+            .background(Color.white)
+            .clipShape(Capsule())
+            .padding()
         }
     }
 }
@@ -129,5 +205,36 @@ struct CategoryView: View {
             }
         }
         .padding(.trailing)
+    }
+}
+
+struct ProductCardView: View {
+    let image: Image
+    let size: CGFloat
+    var body: some View {
+        VStack {
+            image
+                .resizable()
+                .frame(width: size, height: 200 * (size / 210))
+                .cornerRadius(20.0)
+            
+            Text("Luxury Swedian Chair")
+                .font(.title3).bold()
+            
+            HStack(spacing: 2) {
+                ForEach(0 ..< 5) { _ in
+                    Image("star")
+                }
+                
+                Spacer()
+                
+                Text("$1299")
+                    .font(.title3).bold()
+            }
+        }
+        .frame(width: size)
+        .padding()
+        .background(Color.white)
+        .cornerRadius(20.0)
     }
 }
