@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var searchText: String = ""
+    private let categories = ["All", "Chair", "Sofa", "Lamp", "Kitchen", "Table"]
+    
     var body: some View {
         ZStack {
             Color("background")
@@ -18,6 +21,8 @@ struct ContentView: View {
                 
                 TagLineView()
                     .padding()
+                
+                SearchScanView()
             }
         }
     }
@@ -60,5 +65,35 @@ struct TagLineView: View {
         + Text("Furniture!")
             .font(.custom("PlayfairDisplay-Bold", size: 28))
             .foregroundColor(Color("primary"))
+    }
+}
+
+struct SearchScanView: View {
+    @State private var searchText: String = ""
+    
+    var body: some View {
+        HStack {
+            HStack {
+                Image("search")
+                    .padding(.trailing, 8)
+                TextField("Search Furniture", text: $searchText)
+            }
+            .padding(.all, 20)
+            .background(Color.white)
+            .cornerRadius(10.0)
+            .padding(.trailing)
+            
+            Button(action: { }, label: {
+                Image(systemName: "barcode.viewfinder")
+                    .padding(.all, 12)
+                    .font(.system(size: 32, weight: .bold))
+                    .foregroundColor(Color.white)
+                    
+            })
+            .background(Color("primary"))
+            .cornerRadius(10.0)
+            
+        }
+        .padding(.horizontal)
     }
 }
