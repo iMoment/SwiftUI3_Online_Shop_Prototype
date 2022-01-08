@@ -11,6 +11,8 @@
 		913831F02789FD35004E32AC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913831EF2789FD35004E32AC /* ContentView.swift */; };
 		913831F22789FD36004E32AC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 913831F12789FD36004E32AC /* Assets.xcassets */; };
 		913831F52789FD36004E32AC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 913831F42789FD36004E32AC /* Preview Assets.xcassets */; };
+		913831FF278A04E6004E32AC /* PlayfairDisplay-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 913831FC2789FE21004E32AC /* PlayfairDisplay-Bold.ttf */; };
+		91383200278A04EA004E32AC /* PlayfairDisplay-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 913831FD2789FE21004E32AC /* PlayfairDisplay-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +21,8 @@
 		913831EF2789FD35004E32AC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		913831F12789FD36004E32AC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		913831F42789FD36004E32AC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		913831FC2789FE21004E32AC /* PlayfairDisplay-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PlayfairDisplay-Bold.ttf"; sourceTree = "<group>"; };
+		913831FD2789FE21004E32AC /* PlayfairDisplay-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PlayfairDisplay-Regular.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +55,7 @@
 		913831EC2789FD35004E32AC /* Online_Shop_UI */ = {
 			isa = PBXGroup;
 			children = (
+				913831FB2789FE03004E32AC /* Fonts */,
 				913831ED2789FD35004E32AC /* Online_Shop_UIApp.swift */,
 				913831EF2789FD35004E32AC /* ContentView.swift */,
 				913831F12789FD36004E32AC /* Assets.xcassets */,
@@ -65,6 +70,15 @@
 				913831F42789FD36004E32AC /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		913831FB2789FE03004E32AC /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				913831FC2789FE21004E32AC /* PlayfairDisplay-Bold.ttf */,
+				913831FD2789FE21004E32AC /* PlayfairDisplay-Regular.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -125,6 +139,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				91383200278A04EA004E32AC /* PlayfairDisplay-Regular.ttf in Resources */,
+				913831FF278A04E6004E32AC /* PlayfairDisplay-Bold.ttf in Resources */,
 				913831F52789FD36004E32AC /* Preview Assets.xcassets in Resources */,
 				913831F22789FD36004E32AC /* Assets.xcassets in Resources */,
 			);
@@ -272,6 +288,7 @@
 				DEVELOPMENT_TEAM = 8AG33EWU86;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Online-Shop-UI-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -301,6 +318,7 @@
 				DEVELOPMENT_TEAM = 8AG33EWU86;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Online-Shop-UI-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
