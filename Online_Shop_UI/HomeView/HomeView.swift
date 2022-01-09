@@ -12,108 +12,116 @@ struct HomeView: View {
     private let categories = ["All", "Chair", "Sofa", "Lamp", "Kitchen", "Table"]
     
     var body: some View {
-        ZStack {
-            Color("background")
-                .edgesIgnoringSafeArea(.all)
-            
-            ScrollView {
-                VStack(alignment: .leading) {
-                    TopBarView()
-                    
-                    TagLineView()
-                        .padding()
-                    
-                    SearchScanView()
-                    
-                    ScrollView(.horizontal, showsIndicators: false) {
-                        HStack {
-                            ForEach(0..<categories.count) { index in
-                                CategoryView(isActive: index == selectedIndex, text: categories[index])
-                                    .onTapGesture {
-                                        selectedIndex = index
-                                    }
+        NavigationView {
+            ZStack {
+                Color("background")
+                    .edgesIgnoringSafeArea(.all)
+                
+                ScrollView {
+                    VStack(alignment: .leading) {
+                        TopBarView()
+                        
+                        TagLineView()
+                            .padding()
+                        
+                        SearchScanView()
+                        
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            HStack {
+                                ForEach(0..<categories.count) { index in
+                                    CategoryView(isActive: index == selectedIndex, text: categories[index])
+                                        .onTapGesture {
+                                            selectedIndex = index
+                                        }
+                                }
                             }
+                            .padding()
                         }
-                        .padding()
-                    }
-                    
-                    Text("Popular")
-                        .font(.custom("PlayfairDisplay-Bold", size: 24))
-                        .padding(.horizontal)
-                    
-                    ScrollView(.horizontal, showsIndicators: false) {
-                        HStack {
-                            ForEach(0 ..< 4) { index in
-                                ProductCardView(image: Image("chair_\(index + 1)"), size: 210)
+                        
+                        Text("Popular")
+                            .font(.custom("PlayfairDisplay-Bold", size: 24))
+                            .padding(.horizontal)
+                        
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            HStack {
+                                ForEach(0 ..< 4) { index in
+                                    NavigationLink(
+                                        destination: ProductDetailView(),
+                                        label: {
+                                            ProductCardView(image: Image("chair_\(index + 1)"), size: 210)
+                                        })
+                                        .navigationBarHidden(true)
+                                        .foregroundColor(Color.black)
+                                }
+                                .padding(.trailing)
                             }
-                            .padding(.trailing)
+                            .padding(.leading)
                         }
-                        .padding(.leading)
-                    }
-                    
-                    Text("Best")
-                        .font(.custom("PlayfairDisplay-Bold", size: 24))
-                        .padding(.horizontal)
-                        .padding(.top)
-                    
-                    ScrollView(.horizontal, showsIndicators: false) {
-                        HStack {
-                            ForEach(0 ..< 4) { index in
-                                ProductCardView(image: Image("chair_\(index + 1)"), size: 180)
+                        
+                        Text("Best")
+                            .font(.custom("PlayfairDisplay-Bold", size: 24))
+                            .padding(.horizontal)
+                            .padding(.top)
+                        
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            HStack {
+                                ForEach(0 ..< 4) { index in
+                                    ProductCardView(image: Image("chair_\(index + 1)"), size: 180)
+                                }
+                                .padding(.trailing)
                             }
-                            .padding(.trailing)
+                            .padding(.leading)
                         }
-                        .padding(.leading)
                     }
                 }
-            }
-            
-            // MARK: Custom Bottom TabBar
-            HStack {
-                Spacer()
                 
-                Button(action: { }, label: {
-                    Image("home")
-                        .frame(maxWidth: .infinity)
-                })
-                
-                Spacer()
-                
-                Button(action: { }, label: {
-                    Image(systemName: "suit.heart")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(maxWidth: .infinity, maxHeight: 24)
-                        .foregroundColor(Color.black.opacity(0.7))
+                // MARK: Custom Bottom TabBar
+                HStack {
+                    Spacer()
                     
-                })
-                
-                Spacer()
-                
-                Button(action: { }, label: {
-                    Image(systemName: "cart")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(maxWidth: .infinity, maxHeight: 26)
-                        .foregroundColor(Color.black.opacity(0.7))
-                })
-                
-                
-                Spacer()
-                
-                Button(action: { }, label: {
-                    Image("user")
-                        .frame(maxWidth: .infinity)
-                })
-                
-                Spacer()
+                    Button(action: { }, label: {
+                        Image("home")
+                            .frame(maxWidth: .infinity)
+                    })
+                    
+                    Spacer()
+                    
+                    Button(action: { }, label: {
+                        Image(systemName: "suit.heart")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(maxWidth: .infinity, maxHeight: 24)
+                            .foregroundColor(Color.black.opacity(0.7))
+                        
+                    })
+                    
+                    Spacer()
+                    
+                    Button(action: { }, label: {
+                        Image(systemName: "cart")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(maxWidth: .infinity, maxHeight: 26)
+                            .foregroundColor(Color.black.opacity(0.7))
+                    })
+                    
+                    
+                    Spacer()
+                    
+                    Button(action: { }, label: {
+                        Image("user")
+                            .frame(maxWidth: .infinity)
+                    })
+                    
+                    Spacer()
+                }
+                .padding()
+                .background(Color.white)
+                .clipShape(Capsule())
+                .padding(.horizontal)
+                .shadow(color: Color.black.opacity(0.15), radius: 8, x: 2, y: 6)
+                .frame(maxHeight: .infinity, alignment: .bottom)
             }
-            .padding()
-            .background(Color.white)
-            .clipShape(Capsule())
-            .padding(.horizontal)
-            .shadow(color: Color.black.opacity(0.15), radius: 8, x: 2, y: 6)
-            .frame(maxHeight: .infinity, alignment: .bottom)
         }
     }
 }

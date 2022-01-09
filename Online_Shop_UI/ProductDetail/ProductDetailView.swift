@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct ProductDetailView: View {
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    
     var body: some View {
         ZStack {
             Color("background")
@@ -17,11 +19,11 @@ struct ProductDetailView: View {
                 Image("chair_1")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .edgesIgnoringSafeArea(.top)
                 
                 DescriptionView()
                     .offset(y: -40)
             }
+            .edgesIgnoringSafeArea(.top)
             
             HStack {
                 Text("$1299")
@@ -46,6 +48,10 @@ struct ProductDetailView: View {
             .frame(maxHeight: .infinity, alignment: .bottom)
         }
         .edgesIgnoringSafeArea(.bottom)
+        .navigationBarBackButtonHidden(true)
+        .navigationBarItems(leading:
+                                CustomBackButton(action: { presentationMode.wrappedValue.dismiss() }), trailing: Image("three_dots")
+        )
     }
 }
 
@@ -184,5 +190,19 @@ struct ColorDotView: View {
         color
             .frame(width: 24, height: 24)
             .clipShape(Circle())
+    }
+}
+
+struct CustomBackButton: View {
+    let action: () -> Void
+    
+    var body: some View {
+        Button(action: action, label: {
+            Image(systemName: "chevron.backward")
+                .padding(.all, 12)
+                .background(Color.white)
+                .cornerRadius(8.0)
+                .foregroundColor(Color.black)
+        })
     }
 }
