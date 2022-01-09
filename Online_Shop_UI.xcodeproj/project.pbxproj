@@ -13,6 +13,7 @@
 		913831F52789FD36004E32AC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 913831F42789FD36004E32AC /* Preview Assets.xcassets */; };
 		913831FF278A04E6004E32AC /* PlayfairDisplay-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 913831FC2789FE21004E32AC /* PlayfairDisplay-Bold.ttf */; };
 		91383200278A04EA004E32AC /* PlayfairDisplay-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 913831FD2789FE21004E32AC /* PlayfairDisplay-Regular.ttf */; };
+		91EB25CE278B6A0600E87771 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91EB25CD278B6A0600E87771 /* HomeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +24,7 @@
 		913831F42789FD36004E32AC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		913831FC2789FE21004E32AC /* PlayfairDisplay-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PlayfairDisplay-Bold.ttf"; sourceTree = "<group>"; };
 		913831FD2789FE21004E32AC /* PlayfairDisplay-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PlayfairDisplay-Regular.ttf"; sourceTree = "<group>"; };
+		91EB25CD278B6A0600E87771 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,10 +57,11 @@
 		913831EC2789FD35004E32AC /* Online_Shop_UI */ = {
 			isa = PBXGroup;
 			children = (
-				913831FB2789FE03004E32AC /* Fonts */,
 				913831ED2789FD35004E32AC /* Online_Shop_UIApp.swift */,
 				913831EF2789FD35004E32AC /* ContentView.swift */,
+				91EB25CC278B69F800E87771 /* HomeView */,
 				913831F12789FD36004E32AC /* Assets.xcassets */,
+				913831FB2789FE03004E32AC /* Fonts */,
 				913831F32789FD36004E32AC /* Preview Content */,
 			);
 			path = Online_Shop_UI;
@@ -79,6 +82,14 @@
 				913831FD2789FE21004E32AC /* PlayfairDisplay-Regular.ttf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		91EB25CC278B69F800E87771 /* HomeView */ = {
+			isa = PBXGroup;
+			children = (
+				91EB25CD278B6A0600E87771 /* HomeView.swift */,
+			);
+			path = HomeView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -153,6 +164,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				91EB25CE278B6A0600E87771 /* HomeView.swift in Sources */,
 				913831F02789FD35004E32AC /* ContentView.swift in Sources */,
 				913831EE2789FD35004E32AC /* Online_Shop_UIApp.swift in Sources */,
 			);

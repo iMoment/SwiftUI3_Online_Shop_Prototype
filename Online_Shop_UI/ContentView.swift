@@ -8,111 +8,24 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var selectedIndex: Int = 0
-    @State private var searchText: String = ""
-    private let categories = ["All", "Chair", "Sofa", "Lamp", "Kitchen", "Table"]
+    
     
     var body: some View {
-        ZStack {
-            Color("background")
-                .edgesIgnoringSafeArea(.all)
-            
-            ScrollView {
-                VStack(alignment: .leading) {
-                    TopBarView()
+        VStack {
+            ZStack {
+                Color("background")
+                    .edgesIgnoringSafeArea(.all)
+                
+                VStack {
+                    Image("chair_1")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .edgesIgnoringSafeArea(.top)
                     
-                    TagLineView()
-                        .padding()
-                    
-                    SearchScanView()
-                    
-                    ScrollView(.horizontal, showsIndicators: false) {
-                        HStack {
-                            ForEach(0..<categories.count) { index in
-                                CategoryView(isActive: index == selectedIndex, text: categories[index])
-                                    .onTapGesture {
-                                        selectedIndex = index
-                                    }
-                            }
-                        }
-                        .padding()
-                    }
-                    
-                    Text("Popular")
-                        .font(.custom("PlayfairDisplay-Bold", size: 24))
-                        .padding(.horizontal)
-                    
-                    ScrollView(.horizontal, showsIndicators: false) {
-                        HStack {
-                            ForEach(0 ..< 4) { index in
-                                ProductCardView(image: Image("chair_\(index + 1)"), size: 210)
-                            }
-                            .padding(.trailing)
-                        }
-                        .padding(.leading)
-                    }
-                    
-                    Text("Best")
-                        .font(.custom("PlayfairDisplay-Bold", size: 24))
-                        .padding(.horizontal)
-                        .padding(.top)
-                    
-                    ScrollView(.horizontal, showsIndicators: false) {
-                        HStack {
-                            ForEach(0 ..< 4) { index in
-                                ProductCardView(image: Image("chair_\(index + 1)"), size: 180)
-                            }
-                            .padding(.trailing)
-                        }
-                        .padding(.leading)
-                    }
+                    DescriptionView()
+                        .offset(y: -40)
                 }
             }
-            
-            // MARK: Custom Bottom TabBar
-            HStack {
-                Spacer()
-                
-                Button(action: { }, label: {
-                    Image("home")
-                        .frame(maxWidth: .infinity)
-                })
-                
-                Spacer()
-                
-                Button(action: { }, label: {
-                    Image(systemName: "suit.heart")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(maxWidth: .infinity, maxHeight: 24)
-                        .foregroundColor(Color.black.opacity(0.7))
-                        
-                })
-                
-                Spacer()
-                
-                Button(action: { }, label: {
-                    Image(systemName: "cart")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(maxWidth: .infinity, maxHeight: 26)
-                        .foregroundColor(Color.black.opacity(0.7))
-                })
-                
-                
-                Spacer()
-                
-                Button(action: { }, label: {
-                    Image("user")
-                        .frame(maxWidth: .infinity)
-                })
-                
-                Spacer()
-            }
-            .padding()
-            .background(Color.white)
-            .clipShape(Capsule())
-            .padding()
         }
     }
 }
@@ -123,118 +36,71 @@ struct ContentView_Previews: PreviewProvider {
     }
 }
 
-struct TopBarView: View {
+struct DescriptionView: View {
     var body: some View {
-        HStack {
-            Button(action: { }, label: {
-                Image("menu")
-                    .padding()
-                    .background(Color.white)
-                    .cornerRadius(10.0)
-            })
+        VStack(alignment: .leading) {
+            Text("Luxury Swedian \nChair")
+                .font(.title).bold()
             
-            Spacer()
-            
-            Button(action: { }, label: {
-                Image("psyduck")
-                    .resizable()
-                    .frame(width: 42, height: 42)
-                    .cornerRadius(10.0)
-            })
-        }
-        .padding(.horizontal)
-    }
-}
-
-struct TagLineView: View {
-    var body: some View {
-        Text("Find The \nBest ")
-            .font(.custom("PlayfairDisplay-Regular", size: 28))
-            .foregroundColor(Color("primary"))
-        + Text("Furniture!")
-            .font(.custom("PlayfairDisplay-Bold", size: 28))
-            .foregroundColor(Color("primary"))
-    }
-}
-
-struct SearchScanView: View {
-    @State private var searchText: String = ""
-    
-    var body: some View {
-        HStack {
-            HStack {
-                Image("search")
-                    .padding(.trailing, 8)
-                TextField("Search Furniture", text: $searchText)
-            }
-            .padding(.all, 20)
-            .background(Color.white)
-            .cornerRadius(10.0)
-            .padding(.trailing)
-            
-            Button(action: { }, label: {
-                Image(systemName: "barcode.viewfinder")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .foregroundColor(Color.white)
-                    .frame(width: 30, height: 30)
-                    .padding()
-                    
-            })
-            .background(Color("primary"))
-            .cornerRadius(10.0)
-            
-        }
-        .padding(.horizontal)
-    }
-}
-
-struct CategoryView: View {
-    let isActive: Bool
-    let text: String
-    var body: some View {
-        VStack(alignment: .leading, spacing: 0) {
-            Text(text)
-                .font(.system(size: 18, weight: .medium))
-                .foregroundColor(isActive ? Color("primary") : Color.black.opacity(0.5))
-            
-            if isActive {
-                Color("primary")
-                    .frame(width: 15, height: 2)
-                    .clipShape(Capsule())
-            }
-        }
-        .padding(.trailing)
-    }
-}
-
-struct ProductCardView: View {
-    let image: Image
-    let size: CGFloat
-    var body: some View {
-        VStack {
-            image
-                .resizable()
-                .frame(width: size, height: 200 * (size / 210))
-                .cornerRadius(20.0)
-            
-            Text("Luxury Swedian Chair")
-                .font(.title3).bold()
-            
-            HStack(spacing: 2) {
+            HStack(spacing: 4) {
                 ForEach(0 ..< 5) { _ in
                     Image("star")
                 }
                 
-                Spacer()
+                Text("(4.9)")
+                    .opacity(0.5)
+                    .padding(.leading, 8)
                 
-                Text("$1299")
-                    .font(.title3).bold()
+                Spacer()
+            }
+            
+            Text("Description")
+                .fontWeight(.medium)
+                .padding(.vertical, 8)
+            
+            Text("Luxury Swedian Chair is a contemporary chair based on the virtues of modern craft. It carries on the simplicity and honesty of the archetypical chair.")
+                .lineSpacing(8.0)
+                .opacity(0.6)
+            
+            HStack(alignment: .top) {
+                VStack(alignment: .leading) {
+                    Text("Size")
+                        .fontWeight(.semibold)
+                        .padding(.bottom, 4)
+                    
+                    Text("Height: 120 cm")
+                        .opacity(0.6)
+                    
+                    Text("Width: 80 cm")
+                        .opacity(0.6)
+                    
+                    Text("Diameter: 72cm")
+                        .opacity(0.6)
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
+                
+                VStack(alignment: .leading) {
+                    Text("Treatment")
+                        .fontWeight(.semibold)
+                        .padding(.bottom, 4)
+                    
+                    Text("Jati Wood, Canvas, \nAmazing Love")
+                        .opacity(0.6)
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
+            }
+            .padding(.vertical)
+            
+            HStack {
+                VStack {
+                    Text("Colors")
+                        .fontWeight(.semibold)
+                }
             }
         }
-        .frame(width: size)
         .padding()
-        .background(Color.white)
-        .cornerRadius(20.0)
+        .padding(.top)
+        .background(Color("background"))
+        .cornerRadius(40.0)
     }
 }
