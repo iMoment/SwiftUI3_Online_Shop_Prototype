@@ -14,6 +14,7 @@
 		913831FF278A04E6004E32AC /* PlayfairDisplay-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 913831FC2789FE21004E32AC /* PlayfairDisplay-Bold.ttf */; };
 		91383200278A04EA004E32AC /* PlayfairDisplay-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 913831FD2789FE21004E32AC /* PlayfairDisplay-Regular.ttf */; };
 		91EB25CE278B6A0600E87771 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91EB25CD278B6A0600E87771 /* HomeView.swift */; };
+		91EB25D2278B72E800E87771 /* ProductDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91EB25D1278B72E800E87771 /* ProductDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		913831FC2789FE21004E32AC /* PlayfairDisplay-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PlayfairDisplay-Bold.ttf"; sourceTree = "<group>"; };
 		913831FD2789FE21004E32AC /* PlayfairDisplay-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PlayfairDisplay-Regular.ttf"; sourceTree = "<group>"; };
 		91EB25CD278B6A0600E87771 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		91EB25D1278B72E800E87771 /* ProductDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 				913831ED2789FD35004E32AC /* Online_Shop_UIApp.swift */,
 				913831EF2789FD35004E32AC /* ContentView.swift */,
 				91EB25CC278B69F800E87771 /* HomeView */,
+				91EB25D0278B72D500E87771 /* ProductDetail */,
 				913831F12789FD36004E32AC /* Assets.xcassets */,
 				913831FB2789FE03004E32AC /* Fonts */,
 				913831F32789FD36004E32AC /* Preview Content */,
@@ -90,6 +93,14 @@
 				91EB25CD278B6A0600E87771 /* HomeView.swift */,
 			);
 			path = HomeView;
+			sourceTree = "<group>";
+		};
+		91EB25D0278B72D500E87771 /* ProductDetail */ = {
+			isa = PBXGroup;
+			children = (
+				91EB25D1278B72E800E87771 /* ProductDetailView.swift */,
+			);
+			path = ProductDetail;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -165,6 +176,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				91EB25CE278B6A0600E87771 /* HomeView.swift in Sources */,
+				91EB25D2278B72E800E87771 /* ProductDetailView.swift in Sources */,
 				913831F02789FD35004E32AC /* ContentView.swift in Sources */,
 				913831EE2789FD35004E32AC /* Online_Shop_UIApp.swift in Sources */,
 			);
