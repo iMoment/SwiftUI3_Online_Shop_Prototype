@@ -48,6 +48,7 @@ struct ProductDetailView: View {
             .frame(maxHeight: .infinity, alignment: .bottom)
         }
         .edgesIgnoringSafeArea(.bottom)
+        .navigationTitle("")
         .navigationBarBackButtonHidden(true)
         .navigationBarItems(leading:
                                 CustomBackButton(action: { presentationMode.wrappedValue.dismiss() }), trailing: Image("three_dots")
